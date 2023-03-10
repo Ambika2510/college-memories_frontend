@@ -45,8 +45,8 @@ const [posts,setposts]=useState([])
 
   <div className="sticky top-24">
   <div className='flex justify-center m-3 '> <img src={url} alt="tree" id="picture"/></div>
-  <div className='flex justify-center text-2xl font-semibold font-sans '>{user.firstname+" "+user.lastname}</div>
-  <div className='flex justify-center text-2xl font-semibold font-sans'>{user.email}</div>
+  <div className='flex justify-center text-2xl font-semibold  '>{user.firstname+" "+user.lastname}</div>
+  <div className='flex justify-center text-2xl font-semibold '>{user.email}</div>
   <div className='flex justify-center m-3'>
     <Link to={"/createpost"}>
     <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800">
