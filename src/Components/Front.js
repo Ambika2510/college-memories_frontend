@@ -32,22 +32,7 @@ const [posts,setposts]=useState([])
   if(user.length === 0){
     return (
       <div  className ="grid grid-cols-3 gap-x-2.5 h-96 ">
-  <div className="border 2 border-red-500 ">
-  
-  
-  
-  
-  
-  </div>
-  <div className="border-2 border-red-500">
-      
-  
-  </div>
-  
-  
-  <div className="border 2 border-red-500">
-   
-      </div>
+ 
       </div>
     )
   }
@@ -58,10 +43,10 @@ const [posts,setposts]=useState([])
     <div  className ="grid grid-cols-3 ">
 <div className='border-2'>
 
-  <div className="sticky top-20">
+  <div className="sticky top-24">
   <div className='flex justify-center m-3 '> <img src={url} alt="tree" id="picture"/></div>
-  <div className='flex justify-center text-2xl font-semibold font-serif '>{user.firstname+" "+user.lastname}</div>
-  <div className='flex justify-center text-2xl font-semibold font-serif'>{user.email}</div>
+  <div className='flex justify-center text-2xl font-semibold font-sans '>{user.firstname+" "+user.lastname}</div>
+  <div className='flex justify-center text-2xl font-semibold font-sans'>{user.email}</div>
   <div className='flex justify-center m-3'>
     <Link to={"/createpost"}>
     <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800">
@@ -77,13 +62,15 @@ const [posts,setposts]=useState([])
 
 
 </div>
-<div className=''>
-    {posts.map((post)=>(<Middle key={post._id} post={post} userid={user._id} url={url} username={username}/>))}
 
+<div className=''>
+  {posts.length>0?
+    posts.map((post)=>(<Middle key={post._id} post={post} userid={user._id} url={url} username={username}/>)):<h1 className="m-6 text-center text-lg font-semibold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">!!Sorry No Post from your side...</h1>
+  }
 </div>
 
-
-<div >
+<div>
+<div className='sticky top-24'>
   <div className='flex justify-center m-3'>
                             <Right/>
   </div>
@@ -93,6 +80,7 @@ const [posts,setposts]=useState([])
 
     </div>
     
+    </div>
     </div>
   )
 }
