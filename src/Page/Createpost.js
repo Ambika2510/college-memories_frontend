@@ -13,7 +13,13 @@ const Createpost = () => {
     const inputref=useRef(null)
     const handlesubmit=async (e)=>{
         e.preventDefault()
-        const userid="6408dcecf6ef6c6d81ee9916"
+        if(localStorage.length>0){
+        const date=JSON.parse(localStorage.getItem("user"))
+        const config={	
+          headers: {
+          'authorization': `Bearer ${date.token}`
+      }}
+        const userid=date.id
         if(filename===null){
           toast.error("image will not be uploaded",{position:"top-center",autoClose:8000})
           return}
@@ -27,7 +33,7 @@ const Createpost = () => {
             url,
             userid
           }
-          axios.post("http://localhost:3330/api/post/create",data).then((res)=>{
+          axios.post("http://localhost:3330/api/post/create",data,config).then((res)=>{
             if(res.status===200){
               setdescription("")
                    setfilename(null)
@@ -60,7 +66,7 @@ const Createpost = () => {
         //     console.log("post failed")
         // }
       
-    }
+    }}
   return (
     <div>
       <Navbar/>

@@ -9,21 +9,28 @@ const Front = () => {
 const [user,setuser]=useState([])
 const [posts,setposts]=useState([])
 
-
+const data=JSON.parse(localStorage.getItem("user"))
+const userid=data.id
 
 
   useEffect(() => {
+
+   if(localStorage.length>0){
    
-   axios.get("http://localhost:3330/api/user/6408dcecf6ef6c6d81ee9916")
+    const config={	
+        headers: {
+        'authorization': `Bearer ${data.token}`
+    }}
+   axios.get("http://localhost:3330/api/user/"+userid,config)
     .then((res) => {
         setuser(res.data)
     });
    
-    axios.get("http://localhost:3330/api/post/getallpost")
+    axios.get("http://localhost:3330/api/post/getallpost",config)
     .then((res)=>{
       setposts(res.data)
     });
-
+  }
   },[])
   
   

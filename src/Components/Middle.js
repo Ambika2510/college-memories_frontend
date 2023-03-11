@@ -2,6 +2,8 @@ import React ,{useState,useEffect}from 'react'
 import commentlogo from './Commentlogo.png'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import {ToastContainer,toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 const Middle = ({post,userid,url,username}) => {
    const [c,setc]=useState(0);
       const [comment,setcomment]=useState("");
@@ -24,16 +26,32 @@ const Middle = ({post,userid,url,username}) => {
     const urluser=post.userPicturePath;
     const urlpost=post.picturePath;
     const handlesubmit=async()=>{
+      if(localStorage.length>0){
+        const user=JSON.parse(localStorage.getItem('user'));
+        const config={	
+            headers: {
+            'authorization': `Bearer ${user.token}`
+        }}
         const data={userid}
-          const res=await axios.patch("http://localhost:3330/api/post/updatepost/"+post._id,data)
+          const res=await axios.patch("http://localhost:3330/api/post/updatepost/"+post._id,data,config)
           post.likes=res.data.likes;      
         setc(1-c)
         return;
     }
+    else{
+      toast.error("Please Login First",{position:"top-center",autoClose:8000})
+    }
+  }
     const handlecomment=async(e)=>{
       e.preventDefault();
+      if(localStorage.length>0){
+        const user=JSON.parse(localStorage.getItem('user'));
+        const config={	
+            headers: {
+            'authorization': `Bearer ${user.token}`
+        }}
       const data={comment,url,username}
-      const res=await axios.patch("http://localhost:3330/api/post/pushcomment/"+post._id,data)
+      const res=await axios.patch("http://localhost:3330/api/post/pushcomment/"+post._id,data,config)
       post.comments=res.data.comments;
       if(res.status===200){
             setcomment("");
@@ -43,6 +61,10 @@ const Middle = ({post,userid,url,username}) => {
         console.log("comment not added")
       }
     }
+    else{
+      toast.error("Please Login First",{position:"top-center",autoClose:8000})
+    }
+  }
   return (
     <div className='mb-3 border-2 border-gray-300'>
       <Link to={urlprofile}>
@@ -115,7 +137,7 @@ const Middle = ({post,userid,url,username}) => {
 </div>
 </div>
 
-
+<ToastContainer autoClose={8000}/>
  
     </div>
   )

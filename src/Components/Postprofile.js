@@ -20,24 +20,43 @@ const Postprofile = ({post,userid,url,username}) => {
         }
     },[]);
    const handledelete=async()=>{
-        const res=await axios.delete("http://localhost:3330/api/post/deletepost/"+post._id);
+    if(localStorage.length>0){
+      const data=JSON.parse(localStorage.getItem('user'));
+      const config={	
+        headers: {
+        'authorization': `Bearer ${data.token}`
+    }}
+        const res=await axios.delete("http://localhost:3330/api/post/deletepost/"+post._id,config);
         window.location.reload();
+    }
    }
   
       
     const urluser=post.userPicturePath;
     const urlpost=post.picturePath;
     const handlesubmit=async()=>{
+      if(localStorage.length>0){
+        const user=JSON.parse(localStorage.getItem('user'));
+        const config={	
+          headers: {
+          'authorization': `Bearer ${user.token}`
+      }}
         const data={userid}
-          const res=await axios.patch("http://localhost:3330/api/post/updatepost/"+post._id,data)
+          const res=await axios.patch("http://localhost:3330/api/post/updatepost/"+post._id,data,config)
           post.likes=res.data.likes;      
         setc(1-c)
         return;
-    }
+    }}
     const handlecomment=async(e)=>{
       e.preventDefault();
+      if(localStorage.length>0){
+        const user=JSON.parse(localStorage.getItem('user'));
+        const config={	
+          headers: {
+          'authorization': `Bearer ${user.token}`
+      }}
       const data={comment,url,username}
-      const res=await axios.patch("http://localhost:3330/api/post/pushcomment/"+post._id,data)
+      const res=await axios.patch("http://localhost:3330/api/post/pushcomment/"+post._id,data,config)
       post.comments=res.data.comments;
       if(res.status===200){
             setcomment("");
@@ -46,7 +65,7 @@ const Postprofile = ({post,userid,url,username}) => {
       else{
         console.log("comment not added")
       }
-    }
+    }}
   return (
     <div className='mb-3 border-2 border-gray-300'>
         

@@ -8,17 +8,30 @@ import Navbar from '../Components/Navbar';
 const Userprofile = () => {
     const userid=useParams().userid;
     const postuserid=useParams().postuserid;
+    if(localStorage.length>0){
+    const data=JSON.parse(localStorage.getItem('user')).id;
+    if(data!==userid){
+        localStorage.removeItem('user')
+        window.location.href="/login";
+    }
+    }
     const [user,setuser]=useState([]);
     const [posts,setposts]=useState([]);
     const [admin,setadmin]=useState([]);
     const [c,setc]=useState(0);
         useEffect(() => {
-            axios.get("http://localhost:3330/api/user/"+userid)
+            if(localStorage.length>0){
+                const data=JSON.parse(localStorage.getItem('user'));
+                const config={	
+                  headers: {
+                  'authorization': `Bearer ${data.token}`
+              }}
+            axios.get("http://localhost:3330/api/user/"+userid,config)
             .then((res) => {
                 setadmin(res.data)         
             }); 
 
-            axios.get("http://localhost:3330/api/user/"+postuserid)
+            axios.get("http://localhost:3330/api/user/"+postuserid,config)
             .then((res) => {
                 setuser(res.data)
                
@@ -29,18 +42,24 @@ const Userprofile = () => {
                
                 
             });
-            axios.get("http://localhost:3330/api/post/getpost/"+postuserid)
+            axios.get("http://localhost:3330/api/post/getpost/"+postuserid,config)
             .then((res)=>{
               setposts(res.data)
             });
-
+        }
         },[c])
        const url=user.picturePath;
        const handlechange=async()=>{
-        const res=await axios.patch("http://localhost:3330/api/user/updatefriend/"+postuserid+"/"+userid)
+        if(localStorage.length>0){
+            const data=JSON.parse(localStorage.getItem('user'));
+            const config={	
+              headers: {
+              'authorization': `Bearer ${data.token}`
+          }}
+        const res=await axios.patch("http://localhost:3330/api/user/updatefriend/"+postuserid+"/"+userid,config)
         console.log();
         setc(1-c);
-      
+        }
        }
 
     if(userid===postuserid){

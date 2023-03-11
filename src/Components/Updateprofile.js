@@ -16,6 +16,12 @@ const Updateprofile = () => {
   const handlesubmit=async(e)=>{
  
     e.preventDefault();
+    if(localStorage.length>0){
+      const user=JSON.parse(localStorage.getItem('user'));
+      const config={	
+        headers: {
+        'authorization': `Bearer ${user.token}`
+    }}
     if(filename===null){
       toast.error("image will not be uploaded",{position:"top-center",autoClose:8000})
       return}
@@ -27,7 +33,7 @@ const Updateprofile = () => {
           const data={
             url
           }
-         axios.patch("http://localhost:3330/api/user/updateprofile/"+userid,data).then((res)=>{
+         axios.patch("http://localhost:3330/api/user/updateprofile/"+userid,data,config).then((res)=>{
             if(res.status===200){
               setfilename(null);
               inputref.current.value = null;
@@ -35,12 +41,16 @@ const Updateprofile = () => {
               console.log("updateprofile success")
             }
           }).catch((err)=>{
-            console.log(err);
+                console.log(err)
        })
       })
       })
 
     }}
+  else{
+    toast.error("Login to continue",{position:"top-center",autoClose:8000})
+    window.location.href="/login";
+  }}
   return (
     <div>
     <Navbar/>

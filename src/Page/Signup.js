@@ -35,17 +35,19 @@ const Signup = () => {
           }
          axios.post("http://localhost:3330/api/user/signup",data).then((res)=>{
             if(res.status===200){
+              localStorage.setItem("user", JSON.stringify(res.data))
               setfirstname("");
               setlastname("");
               setemail("");
               setpassword("");
               setfilename(null);
               inputref.current.value = null;
-              window.location.href="/";
+              window.location.reload();
               console.log("signup success")
             }
           }).catch((err)=>{
-            console.log(err);
+            const error = err.response.data.error
+             toast.error(error,{position:"top-center",autoClose:8000})
        })
       })
       })
