@@ -22,9 +22,14 @@ const Updatepassword = () => {
     }
     const handleSubmit = (e) => {
         e.preventDefault()
+        const data=JSON.parse(localStorage.getItem('user'))
+         const config={	
+        headers: {
+        'authorization': `Bearer ${data.token}`
+    }}
         const signup = {userid, oldpassword, newpassword };
     
-        axios.post('http://localhost:3330/api/user/updatepassword', signup)
+        axios.post('http://localhost:3330/api/user/updatepassword', signup,config)
             .then(res => {
                 localStorage.setItem("user", JSON.stringify(res.data))
                 toast.success('Password Change successfully',{position:"top-center",autoClose:8000})

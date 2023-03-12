@@ -2,7 +2,6 @@ import React,{useState,useEffect} from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Middle from './Middle'
-import Right from './Right'
 import Friend from './Friend'
 
 const Front = () => {
@@ -84,9 +83,9 @@ const userid=data.id
    <div>
     <Friend userid={user._id}/>
     </div>
-    <div className='flex justify-center m-3 '>
+    {/* <div className='flex justify-center m-3 '>
                             <Right/>
-  </div>
+  </div> */}
     </div>
     
     </div>
