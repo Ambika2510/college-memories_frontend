@@ -22,7 +22,7 @@ const Signup = () => {
       toast.error("image will not be uploaded",{position:"top-center",autoClose:8000})
       return}
     else{
-      toast.success("Wait..Under processing!!",{position:"top-center",autoClose:8000})
+      
       const imagerf=ref(storage,`images/${filename.name+v4()}`);
       uploadBytes(imagerf,filename).then((snapshot)=>{
        getDownloadURL(snapshot.ref).then((url)=>{
@@ -35,6 +35,7 @@ const Signup = () => {
           }
          axios.post("https://blog-backend-25r6.onrender.com/api/user/signup",data).then((res)=>{
             if(res.status===200){
+              toast.success("Sign in",{position:"top-center",autoClose:8000})
               localStorage.setItem("user", JSON.stringify(res.data))
               setfirstname("");
               setlastname("");

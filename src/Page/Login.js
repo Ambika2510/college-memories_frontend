@@ -12,6 +12,7 @@ const Login = () => {
 
     axios.post('https://blog-backend-25r6.onrender.com/api/user/login', signup)
         .then(res => {
+          toast.success("login in",{position:"top-center",autoClose:8000})
             localStorage.setItem("user", JSON.stringify(res.data))
             setEmail('')
             setPassword('')
