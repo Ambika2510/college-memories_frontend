@@ -14,7 +14,7 @@ const Friend = ({userid}) => {
           headers: {
           'authorization': `Bearer ${user.token}`
       }}
-        axios.get("http://localhost:3330/api/user/friends/"+userid,config)
+        axios.get("https://blog-backend-25r6.onrender.com/api/user/friends/"+userid,config)
         .then((res)=> {
             setfriends(res.data)
         
@@ -31,7 +31,7 @@ const Friend = ({userid}) => {
           headers: {
           'authorization': `Bearer ${user.token}`
       }}
-        const res=await axios.patch("http://localhost:3330/api/user/updatefriend/"+userid+"/"+friendid,config)
+        const res=await axios.patch("https://blog-backend-25r6.onrender.com/api/user/updatefriend/"+userid+"/"+friendid,config)
         setc(1-c);
       }
       else{

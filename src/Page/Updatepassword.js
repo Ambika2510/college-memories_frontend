@@ -29,7 +29,7 @@ const Updatepassword = () => {
     }}
         const signup = {userid, oldpassword, newpassword };
     
-        axios.post('http://localhost:3330/api/user/updatepassword', signup,config)
+        axios.post('https://blog-backend-25r6.onrender.com/api/user/updatepassword', signup,config)
             .then(res => {
                 localStorage.setItem("user", JSON.stringify(res.data))
                 toast.success('Password Change successfully',{position:"top-center",autoClose:8000})

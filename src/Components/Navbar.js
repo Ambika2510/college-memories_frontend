@@ -18,7 +18,7 @@ const handlesearchuser=async(e)=>{
       headers: {
       'authorization': `Bearer ${data.token}`
     }}
-    const res=await axios.get("http://localhost:3330/api/user/search/"+searchuser,config)
+    const res=await axios.get("https://blog-backend-25r6.onrender.com/api/user/search/"+searchuser,config)
     if(res.status===200){
         setsearchuserresult(res.data)
         setsearchuser("");

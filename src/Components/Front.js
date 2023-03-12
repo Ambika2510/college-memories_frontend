@@ -20,12 +20,12 @@ const userid=data.id
         headers: {
         'authorization': `Bearer ${data.token}`
     }}
-   axios.get("http://localhost:3330/api/user/"+userid,config)
+   axios.get("https://blog-backend-25r6.onrender.com/api/user/"+userid,config)
     .then((res) => {
         setuser(res.data)
     });
    
-    axios.get("http://localhost:3330/api/post/getallpost",config)
+    axios.get("https://blog-backend-25r6.onrender.com/api/post/getallpost",config)
     .then((res)=>{
       setposts(res.data)
     });
@@ -83,9 +83,6 @@ const userid=data.id
    <div>
     <Friend userid={user._id}/>
     </div>
-    {/* <div className='flex justify-center m-3 '>
-                            <Right/>
-  </div> */}
     </div>
     
     </div>

@@ -34,7 +34,7 @@ const Createpost = () => {
             url,
             userid
           }
-          axios.post("http://localhost:3330/api/post/create",data,config).then((res)=>{
+          axios.post("https://blog-backend-25r6.onrender.com/api/post/create",data,config).then((res)=>{
             if(res.status===200){
               setdescription("")
                    setfilename(null)

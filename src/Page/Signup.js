@@ -33,7 +33,7 @@ const Signup = () => {
             password,
             url
           }
-         axios.post("http://localhost:3330/api/user/signup",data).then((res)=>{
+         axios.post("https://blog-backend-25r6.onrender.com/api/user/signup",data).then((res)=>{
             if(res.status===200){
               localStorage.setItem("user", JSON.stringify(res.data))
               setfirstname("");

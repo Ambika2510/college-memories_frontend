@@ -33,7 +33,7 @@ const Middle = ({post,userid,url,username}) => {
             'authorization': `Bearer ${user.token}`
         }}
         const data={userid}
-          const res=await axios.patch("http://localhost:3330/api/post/updatepost/"+post._id,data,config)
+          const res=await axios.patch("https://blog-backend-25r6.onrender.com/api/post/updatepost/"+post._id,data,config)
           post.likes=res.data.likes;      
         setc(1-c)
         return;
@@ -51,7 +51,7 @@ const Middle = ({post,userid,url,username}) => {
             'authorization': `Bearer ${user.token}`
         }}
       const data={comment,url,username}
-      const res=await axios.patch("http://localhost:3330/api/post/pushcomment/"+post._id,data,config)
+      const res=await axios.patch("https://blog-backend-25r6.onrender.com/api/post/pushcomment/"+post._id,data,config)
       post.comments=res.data.comments;
       if(res.status===200){
             setcomment("");

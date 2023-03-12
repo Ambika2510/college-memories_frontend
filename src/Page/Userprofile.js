@@ -27,12 +27,12 @@ const Userprofile = () => {
                   headers: {
                   'authorization': `Bearer ${data.token}`
               }}
-            axios.get("http://localhost:3330/api/user/"+userid,config)
+            axios.get("https://blog-backend-25r6.onrender.com/api/user/"+userid,config)
             .then((res) => {
                 setadmin(res.data)         
             }); 
 
-            axios.get("http://localhost:3330/api/user/"+postuserid,config)
+            axios.get("https://blog-backend-25r6.onrender.com/api/user/"+postuserid,config)
             .then((res) => {
                 setuser(res.data)
                
@@ -43,7 +43,7 @@ const Userprofile = () => {
                
                 
             });
-            axios.get("http://localhost:3330/api/post/getpost/"+postuserid,config)
+            axios.get("https://blog-backend-25r6.onrender.com/api/post/getpost/"+postuserid,config)
             .then((res)=>{
               setposts(res.data)
             });
@@ -67,7 +67,7 @@ const Userprofile = () => {
               headers: {
               'authorization': `Bearer ${data.token}`
           }}
-        const res=await axios.patch("http://localhost:3330/api/user/updatefriend/"+postuserid+"/"+userid,config)
+        const res=await axios.patch("https://blog-backend-25r6.onrender.com/api/user/updatefriend/"+postuserid+"/"+userid,config)
         console.log();
         setc(1-c);
         }

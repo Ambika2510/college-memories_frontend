@@ -33,7 +33,7 @@ const Updateprofile = () => {
           const data={
             url
           }
-         axios.patch("http://localhost:3330/api/user/updateprofile/"+userid,data,config).then((res)=>{
+         axios.patch("https://blog-backend-25r6.onrender.com/api/user/updateprofile/"+userid,data,config).then((res)=>{
             if(res.status===200){
               setfilename(null);
               inputref.current.value = null;

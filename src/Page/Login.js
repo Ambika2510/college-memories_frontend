@@ -10,7 +10,7 @@ const Login = () => {
     e.preventDefault()
     const signup = { email, password };
 
-    axios.post('http://localhost:3330/api/user/login', signup)
+    axios.post('https://blog-backend-25r6.onrender.com/api/user/login', signup)
         .then(res => {
             localStorage.setItem("user", JSON.stringify(res.data))
             setEmail('')
