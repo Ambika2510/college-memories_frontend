@@ -7,6 +7,7 @@ import Signup from './Page/Signup';
 import Createpost from './Page/Createpost';
 import Userprofile from './Page/Userprofile';
 import Updateprofile from './Components/Updateprofile';
+import Updatepassword from './Page/Updatepassword';
 function App() {
   let user=null;
   if(localStorage.length>0){
@@ -22,6 +23,7 @@ function App() {
     <Route path="/createpost" element={<Createpost/>}/>
     <Route path="/profile/:postuserid/:userid" element={<Userprofile/>}/>
     <Route path="/updateprofile/:userid" element={<Updateprofile/>}/>
+    <Route path="/updatepassword/:userid" element={<Updatepassword/>}/>
    </Routes>
     </div>
     </BrowserRouter>
