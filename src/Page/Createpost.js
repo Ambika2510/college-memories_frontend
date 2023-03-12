@@ -14,6 +14,7 @@ const Createpost = () => {
     const handlesubmit=async (e)=>{
         e.preventDefault()
         if(localStorage.length>0){
+
         const date=JSON.parse(localStorage.getItem("user"))
         const config={	
           headers: {
@@ -66,7 +67,11 @@ const Createpost = () => {
         //     console.log("post failed")
         // }
       
-    }}
+    }
+  else{
+    localStorage.removeItem('user')
+    window.location.href = '/login'
+  }}
   return (
     <div>
       <Navbar/>
