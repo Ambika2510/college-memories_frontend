@@ -26,7 +26,7 @@ const Updateprofile = () => {
       toast.error("image will not be uploaded",{position:"top-center",autoClose:8000})
       return}
     else{
-      toast.success("Wait..Update Under processing!!",{position:"top-center",autoClose:8000})
+      toast.success("Wait..Update Under processing!!",{position:"top-center",autoClose:20000})
       const imagerf=ref(storage,`images/${filename.name+v4()}`);
       uploadBytes(imagerf,filename).then((snapshot)=>{
        getDownloadURL(snapshot.ref).then((url)=>{
@@ -41,7 +41,7 @@ const Updateprofile = () => {
               console.log("updateprofile success")
             }
           }).catch((err)=>{
-                console.log(err)
+            toast.error("update failed",{position:"top-center",autoClose:8000})
        })
       })
       })
@@ -72,7 +72,7 @@ const Updateprofile = () => {
 
     </div>
     </div>
-    <ToastContainer autoClose={8000}/>
+    <ToastContainer autoClose={20000}/>
     </div>
   )
 }
