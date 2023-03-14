@@ -9,7 +9,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     const signup = { email, password };
-    toast.success("!!Wait..login in",{position:"top-center",autoClose:8000})
+    toast.success("!!Wait..login in",{position:"top-center",autoClose:20000})
     axios.post('https://blog-backend-25r6.onrender.com/api/user/login', signup)
         .then(res => {
        
@@ -20,7 +20,7 @@ const Login = () => {
         })
         .catch(err => {  
           const error = err.response.data.error
-             toast.error(error,{position:"top-center",autoClose:8000})
+             toast.error(error,{position:"top-center",autoClose:5000})
          })
 
 
@@ -47,7 +47,7 @@ const Login = () => {
 
     </div>
     </div>
-    <ToastContainer autoClose={8000}/>
+    <ToastContainer autoClose={20000}/>
     </div>
   )
 }

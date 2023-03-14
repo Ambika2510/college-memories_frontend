@@ -25,7 +25,7 @@ const Createpost = () => {
           toast.error("image will not be uploaded",{position:"top-center",autoClose:8000})
           return}
         else{
-          toast.success("Wait..Post will be uploading!!",{position:"top-center",autoClose:8000})
+          toast.success("Wait..Post will be uploading!!",{position:"top-center",autoClose:20000})
           const imagerf=ref(storage,`postimages/${filename.name+v4()}`);
       uploadBytes(imagerf,filename).then((snapshot)=>{
        getDownloadURL(snapshot.ref).then((url)=>{
@@ -43,7 +43,7 @@ const Createpost = () => {
                   window.location.href="/"
             }
           }).catch((err)=>{
-          console.log("post failed");
+            toast.error("post failed",{position:"top-center",autoClose:8000})
        })
       })
       })
@@ -101,7 +101,7 @@ const Createpost = () => {
 
     </div>
     </div>
-    <ToastContainer autoClose={8000}/>
+    <ToastContainer autoClose={20000}/>
     </div>
   )
 }

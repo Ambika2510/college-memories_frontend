@@ -120,8 +120,6 @@ const Postprofile = ({ post, userid, url, username }) => {
           </div>
         </button>
         <button
-          data-modal-target={post._id}
-          data-modal-toggle={post._id}
           className=" "
           type="button"
         >
