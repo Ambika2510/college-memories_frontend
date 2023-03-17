@@ -22,7 +22,7 @@ const Updatepassword = () => {
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-        toast.success("!!Wait..update under processing",{position:"top-center",autoClose:20000})
+        toast.success("!!Wait..update under processing",{position:"top-center",autoClose:40000})
         const data=JSON.parse(localStorage.getItem('user'))
          const config={	
         headers: {
@@ -68,7 +68,7 @@ const Updatepassword = () => {
 
     </div>
     </div>
-    <ToastContainer autoClose={20000}/>
+    <ToastContainer autoClose={40000}/>
     </div>
   
   )

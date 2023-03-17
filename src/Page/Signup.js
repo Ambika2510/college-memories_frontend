@@ -22,7 +22,7 @@ const Signup = () => {
       toast.error("image will not be uploaded",{position:"top-center",autoClose:8000})
       return}
     else{
-      toast.success("!!Wait..Sign in",{position:"top-center",autoClose:20000})
+      toast.success("!!Wait...Sign in under process",{position:"top-center",autoClose:40000})
       const imagerf=ref(storage,`images/${filename.name+v4()}`);
       uploadBytes(imagerf,filename).then((snapshot)=>{
        getDownloadURL(snapshot.ref).then((url)=>{
@@ -94,7 +94,7 @@ const Signup = () => {
 
     </div>
     </div>
-    <ToastContainer autoClose={20000}/>
+    <ToastContainer autoClose={40000}/>
     </div>
   )
 }

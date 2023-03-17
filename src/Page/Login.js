@@ -9,7 +9,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     const signup = { email, password };
-    toast.success("!!Wait..login in",{position:"top-center",autoClose:20000})
+    toast.success("!!Wait...login under process",{position:"top-center",autoClose:40000})
     axios.post('https://blog-backend-25r6.onrender.com/api/user/login', signup)
         .then(res => {
        
@@ -47,7 +47,7 @@ const Login = () => {
 
     </div>
     </div>
-    <ToastContainer autoClose={20000}/>
+    <ToastContainer autoClose={40000}/>
     </div>
   )
 }
