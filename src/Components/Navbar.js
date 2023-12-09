@@ -5,9 +5,9 @@ const Navbar = () => {
 const [searchuser,setsearchuser]=useState("")
 const [searchuserresult,setsearchuserresult]=useState([])
 const [d,setd]=useState(0)
-if(localStorage.length>0){
+if(localStorage.getItem("user")){
   const data=JSON.parse(localStorage.getItem("user"))
-const userid=data.id
+ const userid=data.id
 
 const handleclick = () => {
   localStorage.removeItem('user')
@@ -19,7 +19,10 @@ const handlesearchuser=async(e)=>{
       headers: {
       'authorization': `Bearer ${data.token}`
     }}
-    const res=await axios.get("https://blog-backend-25r6.onrender.com/api/user/search/"+searchuser,config)
+    const res = await axios.get(
+      "https://blog-backend-25r6.onrender.com/api/user/search/" + searchuser,
+      config
+    );
     if(res.status===200){
         setsearchuserresult(res.data)
         setsearchuser("");

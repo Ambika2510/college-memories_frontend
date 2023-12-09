@@ -30,13 +30,19 @@ const Userprofile = () => {
         },
       };
       axios
-        .get("https://blog-backend-25r6.onrender.com/api/user/" + userid, config)
+        .get(
+          "https://blog-backend-25r6.onrender.com/api/user/" + userid,
+          config
+        )
         .then((res) => {
           setadmin(res.data);
         });
 
       axios
-        .get("https://blog-backend-25r6.onrender.com/api/user/" + postuserid, config)
+        .get(
+          "https://blog-backend-25r6.onrender.com/api/user/" + postuserid,
+          config
+        )
         .then((res) => {
           setuser(res.data);
 
@@ -45,7 +51,11 @@ const Userprofile = () => {
           }
         });
       axios
-        .get("https://blog-backend-25r6.onrender.com/api/post/getpost/" + postuserid, config)
+        .get(
+          "https://blog-backend-25r6.onrender.com/api/post/getpost/" +
+            postuserid,
+          config
+        )
         .then((res) => {
           setposts(res.data);
         });

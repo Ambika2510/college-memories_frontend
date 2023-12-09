@@ -14,14 +14,18 @@ const Friend = ({userid}) => {
           headers: {
           'authorization': `Bearer ${user.token}`
       }}
-        axios.get("https://blog-backend-25r6.onrender.com/api/user/friends/"+userid,config)
-        .then((res)=> {
-            setfriends(res.data)
-        
-        })
-        .catch(err => {
-            console.log(err)
-        })
+        axios
+          .get(
+            "https://blog-backend-25r6.onrender.com/api/user/friends/" +
+              userid,
+            config
+          )
+          .then((res) => {
+            setfriends(res.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       }
     },[c])
       const handlechange = async(friendid) => {
@@ -31,7 +35,13 @@ const Friend = ({userid}) => {
           headers: {
           'authorization': `Bearer ${user.token}`
       }}
-        const res=await axios.patch("https://blog-backend-25r6.onrender.com/api/user/updatefriend/"+userid+"/"+friendid,config)
+        const res = await axios.patch(
+          "https://blog-backend-25r6.onrender.com/api/user/updatefriend/" +
+            userid +
+            "/" +
+            friendid,
+          config
+        );
         setc(1-c);
       }
       else{

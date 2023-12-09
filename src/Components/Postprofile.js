@@ -27,7 +27,8 @@ const Postprofile = ({ post, userid, url, username }) => {
         },
       };
       const res = await axios.delete(
-        "https://blog-backend-25r6.onrender.com/api/post/deletepost/" + post._id,
+        "https://blog-backend-25r6.onrender.com/api/post/deletepost/" +
+          post._id,
         config
       );
       window.location.reload();
@@ -46,7 +47,8 @@ const Postprofile = ({ post, userid, url, username }) => {
       };
       const data = { userid };
       const res = await axios.patch(
-        "https://blog-backend-25r6.onrender.com/api/post/updatepost/" + post._id,
+        "https://blog-backend-25r6.onrender.com/api/post/updatepost/" +
+          post._id,
         data,
         config
       );
@@ -66,7 +68,8 @@ const Postprofile = ({ post, userid, url, username }) => {
       };
       const data = { comment, url, username };
       const res = await axios.patch(
-        "https://blog-backend-25r6.onrender.com/api/post/pushcomment/" + post._id,
+        "https://blog-backend-25r6.onrender.com/api/post/pushcomment/" +
+          post._id,
         data,
         config
       );

@@ -30,19 +30,26 @@ const Updatepassword = () => {
     }}
         const signup = {userid, oldpassword, newpassword };
     
-        axios.post('https://blog-backend-25r6.onrender.com/api/user/updatepassword', signup,config)
-            .then(res => {
-                localStorage.setItem("user", JSON.stringify(res.data))
-                toast.success('Password Change successfully',{position:"top-center",autoClose:8000})
-              
-                setoldPassword('')
-                setnewPassword('')
+        axios
+          .post(
+            "https://blog-backend-25r6.onrender.com/api/user/updatepassword",
+            signup,
+            config
+          )
+          .then((res) => {
+            localStorage.setItem("user", JSON.stringify(res.data));
+            toast.success("Password Change successfully", {
+              position: "top-center",
+              autoClose: 8000,
+            });
 
-            })
-            .catch(err => {  
-              const error = err.response.data.error
-                 toast.error(error,{position:"top-center",autoClose:8000})
-             })
+            setoldPassword("");
+            setnewPassword("");
+          })
+          .catch((err) => {
+            const error = err.response.data.error;
+            toast.error(error, { position: "top-center", autoClose: 8000 });
+          });
     
     
     }

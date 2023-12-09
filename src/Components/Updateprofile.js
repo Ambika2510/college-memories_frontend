@@ -33,16 +33,27 @@ const Updateprofile = () => {
           const data={
             url
           }
-         axios.patch("https://blog-backend-25r6.onrender.com/api/user/updateprofile/"+userid,data,config).then((res)=>{
-            if(res.status===200){
-              setfilename(null);
-              inputref.current.value = null;
-              window.location.href="/";
-              console.log("updateprofile success")
-            }
-          }).catch((err)=>{
-            toast.error("update failed",{position:"top-center",autoClose:8000})
-       })
+         axios
+           .patch(
+             "https://blog-backend-25r6.onrender.com/api/user/updateprofile/" +
+               userid,
+             data,
+             config
+           )
+           .then((res) => {
+             if (res.status === 200) {
+               setfilename(null);
+               inputref.current.value = null;
+               window.location.href = "/";
+               console.log("updateprofile success");
+             }
+           })
+           .catch((err) => {
+             toast.error("update failed", {
+               position: "top-center",
+               autoClose: 8000,
+             });
+           });
       })
       })
 

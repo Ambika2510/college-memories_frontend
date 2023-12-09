@@ -34,17 +34,27 @@ const Createpost = () => {
             url,
             userid
           }
-          axios.post("https://blog-backend-25r6.onrender.com/api/post/create",data,config).then((res)=>{
-            if(res.status===200){
-              setdescription("")
-                   setfilename(null)
-                inputref.current.value=""
-                  console.log("post success")
-                  window.location.href="/"
-            }
-          }).catch((err)=>{
-            toast.error("post failed",{position:"top-center",autoClose:8000})
-       })
+          axios
+            .post(
+              "https://blog-backend-25r6.onrender.com/api/post/create",
+              data,
+              config
+            )
+            .then((res) => {
+              if (res.status === 200) {
+                setdescription("");
+                setfilename(null);
+                inputref.current.value = "";
+                console.log("post success");
+                window.location.href = "/";
+              }
+            })
+            .catch((err) => {
+              toast.error("post failed", {
+                position: "top-center",
+                autoClose: 8000,
+              });
+            });
       })
       })
 
